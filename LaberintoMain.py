@@ -1,5 +1,5 @@
 from funciones import *
-
+from os import system
 print("Bienvenido al laberinto")
 print("Tu objetivo es llegar a la salida 'E'")
 
@@ -22,8 +22,28 @@ while eleccion_usuario != "end":
 Selecciona una opcion: """).lower().strip()
     
     match eleccion_usuario:
-        case "g":
-            print(guardar_partida(laberinto))
+        case "w":
+            mover_W(laberinto)
+            system("cls")
             
+        case "a":
+            mover_A(laberinto)
+            system("cls")
+        case "s":
+            mover_S(laberinto)
+            system("cls")
+        case "d":
+            mover_D(laberinto)
+            system("cls")
+        case "g":
+            mensaje = guardar_partida(laberinto)
+            print(mensaje)
+            system("cls")
+            
+        case "end":
+            system("cls")
+            print("Gracias por jugar")
+            break
+        
         
     
