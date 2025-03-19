@@ -37,8 +37,8 @@ Selecciona una opcion: """).lower().strip()
             system("cls")
         case "g":
             mensaje = guardar_partida(laberinto)
-            print(mensaje)
             system("cls")
+            print(mensaje)
             
         case "end":
             system("cls")
