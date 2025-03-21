@@ -49,6 +49,7 @@ while volver_jugar != "n":
             
         if laberinto[-2][-2] == "P":
             print("Felicidades, has llegado a la salida")
+            borrar_guardado()
             break
                 
     volver_jugar = input("Quieres volver a jugar? (s/n): ")

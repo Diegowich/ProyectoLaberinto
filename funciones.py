@@ -19,6 +19,16 @@ def cargar_partida():
         print("No hay una partida guardada")
         return None
     
+def borrar_guardado():
+    directorio_saves = Path(__file__).parent / "saves"
+    archivo_guardado = directorio_saves / "save.txt"
+    
+    if archivo_guardado.exists():
+        archivo_guardado.unlink()
+        return "Partida borrada"
+    else:
+        return "No hay una partida guardada"
+    
  
 def dificultad_dificil():
     return ""
