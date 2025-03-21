@@ -46,11 +46,15 @@ while volver_jugar != "n":
             case "end":
                 system("cls")
                 print("Gracias por jugar")
+            
+        if laberinto[-2][-2] == "P":
+            print("Felicidades, has llegado a la salida")
+            break
                 
     volver_jugar = input("Quieres volver a jugar? (s/n): ")
     system("cls")
     print("Hasta luego")
-    
+
         
         
         
