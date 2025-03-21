@@ -43,7 +43,7 @@ def crear_laberinto(dificultad):
     ['#', '#', '#', '#', '#', '#', '#']
 ]
     elif dificultad == "dificil":
-        return ""
+        return dificultad_dificil()
       
     
     
