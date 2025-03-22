@@ -1,5 +1,5 @@
 from pathlib import Path            # Importamos la librería Path para crear el directorio y el archivo de guardado
-from random import *                # Importamos la funcion random para generar el mapa aleatorio
+import random            # Importamos la funcion random para generar el mapa aleatorio
 
 def guardar_partida(laberinto):                         # Funcion para guardar la partida, que recibe el tipo de laberinto
     directorio_saves = Path(__file__).parent / "saves"  # Se establece el directorio en donde se guardara la partida, se llamara saves
@@ -30,8 +30,26 @@ def borrar_guardado():                      # Funcion para borrar la partida gua
         return "No hay una partida guardada"    # Si no hay una partida guardada, se devuelve un mensaje de que no hay una partida guardada
     
  
-def dificultad_dificil():           # Funcion para crear laberinto dificultad dificil
-    return ""
+def dificultad_dificil(filas=8, columnas=8):
+    # Crear un mapa vacío con paredes en los bordes
+    mapa = [['#' if i == 0 or i == filas - 1 or j == 0 or j == columnas - 1 else '.' 
+             for j in range(columnas)] for i in range(filas)]
+    
+    # Posición inicial del jugador (P)
+    px, py = random.randint(1, filas - 2), random.randint(1, columnas - 2)
+    mapa[px][py] = 'P'
+    
+    # Posicionar la salida (E) en [-2][-2] (penúltima fila y columna)
+    ex, ey = filas - 2, columnas - 2  
+    mapa[ex][ey] = 'E'
+    
+    # Añadir algunas paredes internas aleatorias
+    for _ in range((filas * columnas) // 4):  # Aproximadamente 25% del mapa con muros
+        wx, wy = random.randint(1, filas - 2), random.randint(1, columnas - 2)
+        if mapa[wx][wy] == '.' and (wx, wy) != (px, py):  # No sobrescribir P ni E
+            mapa[wx][wy] = '#'
+    
+    return mapa
  
     
 def crear_laberinto(dificultad):        # Funcion para crear el laberinto segun la dificultad seleccionada
@@ -52,8 +70,9 @@ def crear_laberinto(dificultad):        # Funcion para crear el laberinto segun 
     ['#', '#', '#', '#', '#', 'E', '#'],
     ['#', '#', '#', '#', '#', '#', '#']
 ]
-    elif dificultad == "dificil":           # Si el usuario escribe dificil, se retorna un laberinto dificil
-        return dificultad_dificil()
+    elif dificultad == "dificil":
+        mapa_dificil = dificultad_dificil()  # Si el usuario escribe dificil, se retorna un laberinto dificil
+        return mapa_dificil
       
     
     
