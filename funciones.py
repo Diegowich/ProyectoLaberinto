@@ -1,5 +1,5 @@
 from pathlib import Path            # Importamos la librería Path para crear el directorio y el archivo de guardado
-import random            # Importamos la funcion random para generar el mapa aleatorio
+import random                       # Importamos la funcion random para generar el mapa aleatorio
 
 def guardar_partida(laberinto):                         # Funcion para guardar la partida, que recibe el tipo de laberinto
     directorio_saves = Path(__file__).parent / "saves"  # Se establece el directorio en donde se guardara la partida, se llamara saves
@@ -15,8 +15,7 @@ def cargar_partida():   # Funcion para cargar la partida
     
     if archivo_guardado.exists():                   # Si el archivo de guardado existe 
         return eval(archivo_guardado.read_text())       # Se devuelve el contenido del archivo de guardado como una lista
-    else:
-        print("No hay una partida guardada")            # Si no hay una partida guardada, se notifica que no hay una partida guardada
+    else:                                               # Si no existe el archivo de guardado
         return None                                     # retorna None para que el programa principal sepa que no hay una partida guardada
     
 def borrar_guardado():                      # Funcion para borrar la partida guardada
